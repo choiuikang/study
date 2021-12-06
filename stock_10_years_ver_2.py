@@ -27,7 +27,8 @@ end_day = "20211201"
 
 
 # stock_df_total = pd.DataFrame()
-for i in range(len(stock_total)):
+# for i in range(len(stock_total)):
+for i in range(5):    
     stock_code = stock_total['종목코드'][i]
     stock_name = stock_total['종목명'][i]
     market = stock_total['시장구분'][i]
@@ -38,16 +39,15 @@ for i in range(len(stock_total)):
     stock_df["종목명"] = stock_name 
     stock_df["종목코드"] = stock_code
     stock_df["시장구분"] = market
-    
-    
-    time.sleep(1)
+        
+    stock_df = stock_df.reset_index()
+    time.sleep(0.5)
     print(stock_name)
     
-    if not os.path.exists('stock_df_total_2.csv'):
-        stock_df.to_csv('stock_df_total_2.csv', index=False, mode='w')
+    if not os.path.exists('stock_df_total_3.csv'):
+        stock_df.to_csv('stock_df_total_3.csv', index=False, mode='w')
     else:
-        stock_df.to_csv('stock_df_total_2.csv', index=False, mode='a', header=False)
-    
+        stock_df.to_csv('stock_df_total_3.csv', index=False, mode='a', header=False)
     #time.sleep(0.5) # time.sleep(1) 1초마다 데이터 실행 (데이터가 많으면 한꺼번에 처리하려해 서버 팅길수 있으므로 설정 )
 #     print(str(i) + " 번째 "+ stock_name) # 잘 실행되는지 확인하기위해 설정 해주었다.
     
