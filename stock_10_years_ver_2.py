@@ -17,10 +17,16 @@ stock_total = pd.read_csv("stock_list.csv")
 
 
 # In[7]:
+import sys
 
+start_day = sys.argv[1]
+end_day = sys.argv[2]
 
-start_day = "20111201"
-end_day = "20211201"
+start_day = str(start_day)
+end_day = str(end_day)
+
+# start_day = "20111201"
+# end_day = "20211201"
 
 
 # In[6]:
@@ -44,13 +50,11 @@ for i in range(5):
     time.sleep(0.5)
     print(stock_name)
     
-    if not os.path.exists('stock_df_total_3.csv'):
-        stock_df.to_csv('stock_df_total_3.csv', index=False, mode='w')
+    if not os.path.exists('stock_df_total_4.csv'):
+        stock_df.to_csv('stock_df_total_4.csv', index=False, mode='w')
     else:
-        stock_df.to_csv('stock_df_total_3.csv', index=False, mode='a', header=False)
+        stock_df.to_csv('stock_df_total_4.csv', index=False, mode='a', header=False)
     #time.sleep(0.5) # time.sleep(1) 1초마다 데이터 실행 (데이터가 많으면 한꺼번에 처리하려해 서버 팅길수 있으므로 설정 )
 #     print(str(i) + " 번째 "+ stock_name) # 잘 실행되는지 확인하기위해 설정 해주었다.
     
-    # pd.concat 데이터 프레임 이어 붙히기
-#     stock_df_total = pd.concat([stock_df_total,stock_df])
 
